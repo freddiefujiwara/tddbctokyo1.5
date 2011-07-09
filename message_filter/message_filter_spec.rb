@@ -10,10 +10,12 @@ describe MessageFilter do
 		it do
 			should_not be_detect('hello, world!')
 		end
+		its(:ng_words) do should_not be_empty end
 	end
 	context  'with argument "foo"' do
 		subject do MessageFilter.new('foo') end
 		it_should_behave_like 'MessageFilter with argument "foo"'
+		it do should have(1).ng_words end
 	end
 	context  'with argument "foo","bar"' do
 		subject do MessageFilter.new('foo','bar') end
@@ -21,5 +23,6 @@ describe MessageFilter do
 			should be_detect('hello from bar')
 		end
 		it_should_behave_like 'MessageFilter with argument "foo"'
+		it do should have(2).ng_words end
 	end
 end
