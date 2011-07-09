@@ -1,0 +1,2 @@
+do
+rspec -fs message_filter_spec.rb
